@@ -1,0 +1,270 @@
+/Users/itamarnierenberg/opt/anaconda3/envs/deep_learn/bin/python /Users/itamarnierenberg/Library/CloudStorage/OneDrive-Technion/Documents/Computer Engineering/Semester 7/046211 - Deep Learning/046211-Deep-Learning/Project/train.py
+[INFO] Current training device: cpu
+[INFO] Class labels: ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
+[INFO] Train samples: 25838 ...	 Validation samples: 2871...
+[INFO] Total sample: Counter({3: 6513, 4: 4466, 5: 4349, 2: 3687, 0: 3596, 6: 2838, 1: 389})
+[INFO] Training the model...
+[INFO] epoch: 1/50
+train loss: 2.264  .. train accuracy: 0.156
+val loss: 2.122  .. val accuracy: 0.056
+
+[INFO] epoch: 2/50
+train loss: 2.178  .. train accuracy: 0.174
+val loss: 2.379  .. val accuracy: 0.067
+
+[INFO] Early stopping: 1/10...
+
+
+[INFO] epoch: 3/50
+train loss: 2.083  .. train accuracy: 0.215
+val loss: 2.030  .. val accuracy: 0.200
+
+[INFO] epoch: 4/50
+train loss: 1.783  .. train accuracy: 0.324
+val loss: 1.638  .. val accuracy: 0.377
+
+[INFO] epoch: 5/50
+train loss: 1.575  .. train accuracy: 0.398
+val loss: 1.473  .. val accuracy: 0.439
+
+[INFO] epoch: 6/50
+train loss: 1.477  .. train accuracy: 0.441
+val loss: 1.519  .. val accuracy: 0.408
+
+[INFO] Early stopping: 1/10...
+
+
+[INFO] epoch: 7/50
+train loss: 1.424  .. train accuracy: 0.463
+val loss: 1.398  .. val accuracy: 0.468
+
+[INFO] epoch: 8/50
+train loss: 1.377  .. train accuracy: 0.480
+val loss: 1.400  .. val accuracy: 0.455
+
+[INFO] Early stopping: 1/10...
+
+
+[INFO] epoch: 9/50
+train loss: 1.329  .. train accuracy: 0.502
+val loss: 1.409  .. val accuracy: 0.475
+
+[INFO] Early stopping: 2/10...
+
+
+[INFO] epoch: 10/50
+train loss: 1.312  .. train accuracy: 0.509
+val loss: 1.419  .. val accuracy: 0.449
+
+[INFO] Early stopping: 3/10...
+
+
+[INFO] epoch: 11/50
+train loss: 1.276  .. train accuracy: 0.521
+val loss: 1.378  .. val accuracy: 0.490
+
+[INFO] epoch: 12/50
+train loss: 1.246  .. train accuracy: 0.533
+val loss: 1.381  .. val accuracy: 0.490
+
+[INFO] Early stopping: 1/10...
+
+
+[INFO] epoch: 13/50
+train loss: 1.216  .. train accuracy: 0.541
+val loss: 1.344  .. val accuracy: 0.486
+
+[INFO] epoch: 14/50
+train loss: 1.195  .. train accuracy: 0.548
+val loss: 1.334  .. val accuracy: 0.504
+
+[INFO] epoch: 15/50
+train loss: 1.180  .. train accuracy: 0.555
+val loss: 1.270  .. val accuracy: 0.521
+
+[INFO] epoch: 16/50
+train loss: 1.160  .. train accuracy: 0.563
+val loss: 1.357  .. val accuracy: 0.495
+
+[INFO] Early stopping: 1/10...
+
+
+[INFO] epoch: 17/50
+train loss: 1.144  .. train accuracy: 0.569
+val loss: 1.336  .. val accuracy: 0.483
+
+[INFO] Early stopping: 2/10...
+
+
+[INFO] epoch: 18/50
+train loss: 1.137  .. train accuracy: 0.571
+val loss: 1.300  .. val accuracy: 0.507
+
+[INFO] Early stopping: 3/10...
+
+
+[INFO] epoch: 19/50
+train loss: 1.111  .. train accuracy: 0.584
+val loss: 1.248  .. val accuracy: 0.536
+
+[INFO] epoch: 20/50
+train loss: 1.106  .. train accuracy: 0.588
+val loss: 1.345  .. val accuracy: 0.482
+
+[INFO] Early stopping: 1/10...
+
+
+[INFO] epoch: 21/50
+train loss: 1.091  .. train accuracy: 0.589
+val loss: 1.374  .. val accuracy: 0.485
+
+[INFO] Early stopping: 2/10...
+
+
+[INFO] epoch: 22/50
+train loss: 1.091  .. train accuracy: 0.588
+val loss: 1.297  .. val accuracy: 0.520
+
+[INFO] Early stopping: 3/10...
+
+
+[INFO] epoch: 23/50
+train loss: 1.059  .. train accuracy: 0.601
+val loss: 1.324  .. val accuracy: 0.514
+
+[INFO] Early stopping: 4/10...
+
+
+[INFO] epoch: 24/50
+train loss: 1.060  .. train accuracy: 0.601
+val loss: 1.312  .. val accuracy: 0.499
+
+[INFO] Early stopping: 5/10...
+
+
+[INFO] epoch: 25/50
+train loss: 1.047  .. train accuracy: 0.607
+val loss: 1.246  .. val accuracy: 0.529
+
+[INFO] epoch: 26/50
+train loss: 1.033  .. train accuracy: 0.612
+val loss: 1.263  .. val accuracy: 0.519
+
+[INFO] Early stopping: 1/10...
+
+
+[INFO] epoch: 27/50
+train loss: 1.033  .. train accuracy: 0.613
+val loss: 1.274  .. val accuracy: 0.532
+
+[INFO] Early stopping: 2/10...
+
+
+[INFO] epoch: 28/50
+train loss: 1.016  .. train accuracy: 0.618
+val loss: 1.305  .. val accuracy: 0.515
+
+[INFO] Early stopping: 3/10...
+
+
+[INFO] epoch: 29/50
+train loss: 1.008  .. train accuracy: 0.622
+val loss: 1.307  .. val accuracy: 0.527
+
+[INFO] Early stopping: 4/10...
+
+
+[INFO] epoch: 30/50
+train loss: 1.014  .. train accuracy: 0.624
+val loss: 1.220  .. val accuracy: 0.546
+
+[INFO] epoch: 31/50
+train loss: 0.986  .. train accuracy: 0.630
+val loss: 1.246  .. val accuracy: 0.550
+
+[INFO] Early stopping: 1/10...
+
+
+[INFO] epoch: 32/50
+train loss: 0.998  .. train accuracy: 0.625
+val loss: 1.348  .. val accuracy: 0.522
+
+[INFO] Early stopping: 2/10...
+
+
+[INFO] epoch: 33/50
+train loss: 0.969  .. train accuracy: 0.640
+val loss: 1.242  .. val accuracy: 0.550
+
+[INFO] Early stopping: 3/10...
+
+
+[INFO] epoch: 34/50
+train loss: 0.969  .. train accuracy: 0.641
+val loss: 1.268  .. val accuracy: 0.541
+
+[INFO] Early stopping: 4/10...
+
+
+[INFO] epoch: 35/50
+train loss: 0.954  .. train accuracy: 0.645
+val loss: 1.239  .. val accuracy: 0.549
+
+[INFO] Early stopping: 5/10...
+
+
+[INFO] epoch: 36/50
+train loss: 0.953  .. train accuracy: 0.647
+val loss: 1.321  .. val accuracy: 0.546
+
+Epoch    36: reducing learning rate of group 0 to 5.0000e-02.
+[INFO] Early stopping: 6/10...
+
+
+[INFO] epoch: 37/50
+train loss: 0.833  .. train accuracy: 0.685
+val loss: 1.240  .. val accuracy: 0.565
+
+[INFO] Early stopping: 7/10...
+
+
+[INFO] epoch: 38/50
+train loss: 0.806  .. train accuracy: 0.702
+val loss: 1.241  .. val accuracy: 0.566
+
+[INFO] Early stopping: 8/10...
+
+
+[INFO] epoch: 39/50
+train loss: 0.801  .. train accuracy: 0.703
+val loss: 1.223  .. val accuracy: 0.562
+
+[INFO] Early stopping: 9/10...
+
+
+[INFO] epoch: 40/50
+train loss: 0.798  .. train accuracy: 0.702
+val loss: 1.233  .. val accuracy: 0.565
+
+[INFO] Early stopping: 10/10...
+
+
+[INFO] Early stopping enabled
+[INFO] Total training time: 9:06:13.567909...
+[INFO] evaluating network...
+              precision    recall  f1-score   support
+
+       angry       0.50      0.49      0.49       958
+     disgust       0.58      0.55      0.56       111
+        fear       0.39      0.41      0.40      1024
+       happy       0.85      0.76      0.80      1774
+     neutral       0.63      0.42      0.51      1233
+         sad       0.40      0.55      0.46      1247
+    surprise       0.70      0.77      0.73       831
+
+    accuracy                           0.58      7178
+   macro avg       0.58      0.56      0.57      7178
+weighted avg       0.60      0.58      0.58      7178
+
+
+Process finished with exit code 0
