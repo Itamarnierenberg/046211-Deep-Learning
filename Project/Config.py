@@ -3,14 +3,15 @@ import os
 
 GPU_STR = 'mps'     # Apple GPU
 CPU_STR = 'cpu'
-RGB = False
-NUM_INPUT_CHANNELS = 1
+RGB = True
+NUM_INPUT_CHANNELS = 3
 assert (RGB and NUM_INPUT_CHANNELS == 3) or (not RGB and NUM_INPUT_CHANNELS == 1)
 
 RES_NET_18 = 'ResNet18'
 VGG_13 = 'VGG-13'
 PERSONAL = 'Personal'
-MODEL = VGG_13  # ResNet18, VGG-13, PERSONAL
+MODEL = PERSONAL  # ResNet18, VGG-13, PERSONAL
+NETWORK_CONFIG = [32, 32, 'M', 64, 64, 'M', 128, 128, 'M']
 # Label Encoding
 
 ANGRY = 0
@@ -43,5 +44,6 @@ BATCH_SIZE = 16
 NUM_OF_EPOCHS = 50
 LR = 1e-1
 MOMENTUM = 0.9
+DROPOUT = 0.5
 
 FEATURE_EXTRACT = True

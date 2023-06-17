@@ -75,34 +75,39 @@ test_loader = DataLoader(test_data, batch_size=cfg.BATCH_SIZE)
 # Visualize a few images from the data
 show_examples(train_data)
 
-pre_trained_model = HowDoIFeel()
-pre_trained_model = pre_trained_model.to(device)
+is_pre_trained = False if cfg.MODEL == cfg.PERSONAL else True
+model = HowDoIFeel(is_pre_trained=is_pre_trained)
+model = model.to(device)
 
 # Gather the parameters to be optimized/updated in this run. If we are
 #  fine-tuning we will be updating all parameters. However, if we are
 #  doing feature extract method, we will only update the parameters
 #  that we have just initialized, i.e. the parameters with requires_grad
 #  is True.
-params_to_update = pre_trained_model.parameters()
-print(params_to_update)
-print("[INFO] Params to learn:")
-if cfg.FEATURE_EXTRACT:
-    params_to_update = []  # override the initial list definition above
-    for name, param in pre_trained_model.named_parameters():
-        if param.requires_grad:
-            params_to_update.append(param)
-            print(f"\t[INFO] {name}")
+params_to_update = model.parameters()
+if is_pre_trained:
+    print(params_to_update)
+    print("[INFO] Params to learn:")
+    if cfg.FEATURE_EXTRACT:
+        params_to_update = []  # override the initial list definition above
+        for name, param in model.named_parameters():
+            if param.requires_grad:
+                params_to_update.append(param)
+                print(f"\t[INFO] {name}")
+    else:
+        for name, param in model.named_parameters():
+            if param.requires_grad:
+                print(f"\t[INFO] {name}")
 else:
-    for name, param in pre_trained_model.named_parameters():
-        if param.requires_grad:
-            print(f"\t[INFO] {name}")
+    print('[INFO] Network Architecture:')
+    print(model)
 
 # Observe that all parameters are being optimized
 optimizer = torch.optim.SGD(params_to_update, lr=cfg.LR)
 data_loaders = {'train': train_loader, 'val': val_loader}
 criterion = nn.CrossEntropyLoss()
 
-model, _, history = train_model(pre_trained_model, data_loaders, criterion, optimizer)
+model, _, history = train_model(model, data_loaders, criterion, optimizer)
 # move model back to cpu and save the trained model to disk
 if device == cfg.GPU_STR:
     model = model.to(cfg.CPU_STR)
