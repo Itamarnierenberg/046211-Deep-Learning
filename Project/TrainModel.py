@@ -3,10 +3,16 @@ from copy import deepcopy
 from tqdm import tqdm
 import Config as cfg
 import torch
+from tools import LRScheduler
+from tools import EarlyStopping
 
 
 device = "mps" if torch.has_mps else "cpu"
 def train_model(model, dataloaders, criterion, optimizer, num_epochs=cfg.NUM_OF_EPOCHS):
+    if cfg.ENABLE_SCHEDULER:
+        lr_scheduler = LRScheduler(optimizer)
+    if cfg.ENABLE_EARLY_STOPPING:
+        early_stopping = EarlyStopping()
     since = time()
     val_acc_history = []
     best_model_wts = deepcopy(model.state_dict())
@@ -73,6 +79,11 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=cfg.NUM_OF_
                 history['val_loss'].append(avg_epoch_loss.cpu().detach().numpy())
                 history['val_acc'].append(val_correct)
                 print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, avg_epoch_loss, val_correct))
+                validation_loss = avg_epoch_loss.cpu().detach().numpy()
+                if cfg.ENABLE_SCHEDULER:
+                    lr_scheduler(validation_loss)
+                if cfg.ENABLE_EARLY_STOPPING:
+                    early_stopping(validation_loss)
 
             # deep copy the model
             if phase == 'val' and val_correct > best_acc:
@@ -81,6 +92,8 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=cfg.NUM_OF_
             if phase == 'val':
                 val_acc_history.append(val_correct)
         print()
+        if cfg.ENABLE_EARLY_STOPPING and early_stopping.early_stop_enabled:
+            break
 
     time_elapsed = time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))

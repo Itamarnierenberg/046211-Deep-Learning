@@ -3,8 +3,8 @@ import os
 
 GPU_STR = 'mps'     # Apple GPU
 CPU_STR = 'cpu'
-RGB = True
-NUM_INPUT_CHANNELS = 3
+RGB = False
+NUM_INPUT_CHANNELS = 1
 assert (RGB and NUM_INPUT_CHANNELS == 3) or (not RGB and NUM_INPUT_CHANNELS == 1)
 
 RES_NET_18 = 'ResNet18'
@@ -15,15 +15,14 @@ NETWORK_CONFIG = [32, 32, 'M', 64, 64, 'M', 128, 128, 'M']
 # Label Encoding
 
 ANGRY = 0
-DISGUST = 1
-FEAR = 2
-HAPPY = 3
-SAD = 5
-SURPRISE = 6
-NEUTRAL = 4
+FEAR = 1
+HAPPY = 2
+SAD = 3
+SURPRISE = 4
+NEUTRAL = 5
 
-CODE_TO_STR = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise'] # ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
-LABELS_MAP = {ANGRY: 'Angry', DISGUST: 'Disgust', FEAR: 'Fear', HAPPY: 'Happy', SAD: 'Sad', SURPRISE: 'Surprise', NEUTRAL: 'Neutral'}
+CODE_TO_STR = ['Angry', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise'] # ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
+LABELS_MAP = {ANGRY: 'Angry', FEAR: 'Fear', HAPPY: 'Happy', SAD: 'Sad', SURPRISE: 'Surprise', NEUTRAL: 'Neutral'}
 NUM_CLASSES = len(CODE_TO_STR)
 
 # initialize the path to the root folder where the dataset resides and the
@@ -35,15 +34,26 @@ RESULTS_DIRECTORY = os.path.join("model")
 MODEL_FILE = 'model.pth'
 PLOT_FILE = 'plot.png'
 
-# initialize the amount of samples to use for training and validation
+# Train size and validation size
 TRAIN_SIZE = 0.90
 VAL_SIZE = 0.10
 
-# specify the batch size, total number of epochs and the learning rate
+# Training Parameters:
 BATCH_SIZE = 16
 NUM_OF_EPOCHS = 50
 LR = 1e-1
 MOMENTUM = 0.9
 DROPOUT = 0.5
+
+# Scheduler Parameters:
+ENABLE_SCHEDULER = True
+SCHED_PATIENCE = 5          # Num of epochs to wait before updating the learning rate
+MIN_LR = 1e-6               # When reaching this learning rate stop reducing
+REDUCE_FACTOR = 0.5         # The factor which the learning rate will be reduced by
+
+# Early Stopping Parameters:
+ENABLE_EARLY_STOPPING = True
+EARLY_STOPPING_PATIENCE = 10    # Num of epochs to wait before stopping the training procedure
+MINIMUM_IMPROVEMENT = 0         # the minimum difference between (previous and the new loss) to consider the network is improving.
 
 FEATURE_EXTRACT = True
