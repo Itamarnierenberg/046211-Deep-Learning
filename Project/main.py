@@ -8,6 +8,7 @@ from torchvision.transforms import RandomHorizontalFlip
 from torch.utils.data import random_split
 from torch.utils.data import DataLoader
 from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
 import numpy as np
 from collections import Counter
 import matplotlib.pyplot as plt
@@ -16,6 +17,8 @@ import torch.nn as nn
 from TrainModel import train_model
 import Config as cfg
 from tools import show_examples
+from tools import plot_confusion_matrix
+from tools import print_hyper_params
 
 
 # configure the device to use for training the model, either gpu or cpu
@@ -66,8 +69,8 @@ class_count_train = Counter(train_classes)
 print(f"[INFO] Total sample: {class_count_train}")
 print(f'[INFO] Train Data Summarize:')
 for label, num_samples in class_count_train.items():
-    print(f'\t[INFO] Emotion: {cfg.CODE_TO_STR[label]}, Samples: {num_samples}')
-
+    print(f'[INFO] \tEmotion: {cfg.CODE_TO_STR[label]}, Samples: {num_samples}')
+print_hyper_params()
 train_loader = DataLoader(train_data, batch_size=cfg.BATCH_SIZE)    # FIXME - Maybe add sampler=sampler
 val_loader = DataLoader(val_data, batch_size=cfg.BATCH_SIZE)
 test_loader = DataLoader(test_data, batch_size=cfg.BATCH_SIZE)
@@ -75,7 +78,7 @@ test_loader = DataLoader(test_data, batch_size=cfg.BATCH_SIZE)
 # Visualize a few images from the data
 show_examples(train_data)
 
-is_pre_trained = False if cfg.MODEL == cfg.PERSONAL else True
+is_pre_trained = False if cfg.MODEL == cfg.PERSONAL_1 or cfg.MODEL == cfg.PERSONAL_2 else True
 model = HowDoIFeel(is_pre_trained=is_pre_trained)
 model = model.to(device)
 
@@ -93,17 +96,22 @@ if is_pre_trained:
         for name, param in model.named_parameters():
             if param.requires_grad:
                 params_to_update.append(param)
-                print(f"\t[INFO] {name}")
+                print(f"[INFO] \t{name}")
     else:
         for name, param in model.named_parameters():
             if param.requires_grad:
-                print(f"\t[INFO] {name}")
+                print(f"[INFO] \t{name}")
 else:
     print('[INFO] Network Architecture:')
     print(model)
 
 # Observe that all parameters are being optimized
-optimizer = torch.optim.SGD(params_to_update, lr=cfg.LR)
+if cfg.OPTIMIZER == 'SGD':
+    optimizer = torch.optim.SGD(params_to_update, lr=cfg.LR)
+elif cfg.OPTIMIZER == 'Adam':
+    optimizer = torch.optim.Adam(params_to_update, lr=cfg.LR)
+else:
+    raise NotImplementedError
 data_loaders = {'train': train_loader, 'val': val_loader}
 criterion = nn.CrossEntropyLoss()
 
@@ -148,4 +156,8 @@ with torch.set_grad_enabled(False):
 print("[INFO] evaluating network...")
 actual = [label for _, label in test_data]
 print(classification_report(actual, predictions, target_names=test_data.classes))
+con_mat = confusion_matrix(actual, predictions)
+plot_confusion_matrix(con_mat, test_data.classes)
+test_acc = (predictions == np.array(actual)).sum() / len(predictions)
+print(f"[INFO] Final Test Accuracy = {test_acc}")
 

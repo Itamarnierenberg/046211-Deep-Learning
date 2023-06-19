@@ -72,13 +72,13 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=cfg.NUM_OF_
                 train_correct = train_correct / len(dataloaders[phase].dataset)
                 history['train_loss'].append(avg_epoch_loss.cpu().detach().numpy())
                 history['train_acc'].append(train_correct)
-                print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, avg_epoch_loss, train_correct))
+                print('{} Loss: {:.4f} Acc: {:.4f} Learning Rate: {:.4f}'.format(phase, avg_epoch_loss, train_correct, cfg.LR))
             else:
                 avg_epoch_loss = total_val_loss / val_steps
                 val_correct = val_correct / len(dataloaders[phase].dataset)
                 history['val_loss'].append(avg_epoch_loss.cpu().detach().numpy())
                 history['val_acc'].append(val_correct)
-                print('{} Loss: {:.4f} Acc: {:.4f}'.format(phase, avg_epoch_loss, val_correct))
+                print('{} Loss: {:.4f} Acc: {:.4f} Learning Rate: {:.4f}'.format(phase, avg_epoch_loss, val_correct, cfg.LR))
                 validation_loss = avg_epoch_loss.cpu().detach().numpy()
                 if cfg.ENABLE_SCHEDULER:
                     lr_scheduler(validation_loss)

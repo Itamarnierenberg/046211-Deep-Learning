@@ -9,8 +9,9 @@ assert (RGB and NUM_INPUT_CHANNELS == 3) or (not RGB and NUM_INPUT_CHANNELS == 1
 
 RES_NET_18 = 'ResNet18'
 VGG_13 = 'VGG-13'
-PERSONAL = 'Personal'
-MODEL = PERSONAL  # ResNet18, VGG-13, PERSONAL
+PERSONAL_1 = 'Personal_1'
+PERSONAL_2 = 'Personal_2'
+MODEL = RES_NET_18  # ResNet18, VGG-13, PERSONAL
 NETWORK_CONFIG = [32, 32, 'M', 64, 64, 'M', 128, 128, 'M']
 # Label Encoding
 
@@ -33,6 +34,8 @@ TEST_DIRECTORY = os.path.join(DATASET_FOLDER, "test")
 RESULTS_DIRECTORY = os.path.join("model")
 MODEL_FILE = 'model.pth'
 PLOT_FILE = 'plot.png'
+CONFUSION_MAT_FILE = 'ConfusionMatrix.png'
+DATA_SAMPLE_FILE = 'DataSample.png'
 
 # Train size and validation size
 TRAIN_SIZE = 0.90
@@ -41,19 +44,23 @@ VAL_SIZE = 0.10
 # Training Parameters:
 BATCH_SIZE = 16
 NUM_OF_EPOCHS = 50
-LR = 1e-1
+LR = 0.1
 MOMENTUM = 0.9
 DROPOUT = 0.5
+
+# Optimizer
+OPTIMIZER = 'SGD'
+
 
 # Scheduler Parameters:
 ENABLE_SCHEDULER = True
 SCHED_PATIENCE = 5          # Num of epochs to wait before updating the learning rate
 MIN_LR = 1e-6               # When reaching this learning rate stop reducing
-REDUCE_FACTOR = 0.5         # The factor which the learning rate will be reduced by
+REDUCE_FACTOR = 0.3         # The factor which the learning rate will be reduced by
 
 # Early Stopping Parameters:
-ENABLE_EARLY_STOPPING = True
+ENABLE_EARLY_STOPPING = False
 EARLY_STOPPING_PATIENCE = 10    # Num of epochs to wait before stopping the training procedure
 MINIMUM_IMPROVEMENT = 0         # the minimum difference between (previous and the new loss) to consider the network is improving.
 
-FEATURE_EXTRACT = True
+FEATURE_EXTRACT = False
