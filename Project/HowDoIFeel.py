@@ -2,6 +2,7 @@ import torch.nn as nn
 import Config as cfg
 from torchvision.models import resnet18
 from torchvision.models import vgg13
+from transformers import ViTModel, ViTConfig
 
 
 def set_parameter_requires_grad(model, feature_extracting=cfg.FEATURE_EXTRACT):
@@ -37,6 +38,15 @@ class HowDoIFeel(nn.Module):
             self.model.classifier[6] = nn.Linear(num_ftrs, output_dim, bias=False)
             self.input_size = 224
             self.is_pre_trained = True
+        elif cfg.MODEL == cfg.VIT:
+            model_checkpoint = 'google/vit-base-patch16-224-in21k'
+            self.model = ViTModel.from_pretrained(model_checkpoint, add_pooling_layer=False)
+            set_parameter_requires_grad(self.model, feature_extract)
+            config = ViTConfig()
+            self.classifier = (
+                nn.Linear(config.hidden_size, output_dim)
+            )
+            self.is_pre_trained = True
         elif cfg.MODEL == cfg.PERSONAL_1:
             self.features = nn.Sequential(nn.Conv2d(1, 32, kernel_size=3, padding=1),
                                           nn.BatchNorm2d(32),
@@ -63,7 +73,7 @@ class HowDoIFeel(nn.Module):
                                             nn.Dropout(p=cfg.DROPOUT),
                                             nn.Linear(6 * 6 * 128, 64),
                                             nn.ELU(True),
-                                            nn.Dropout(p=0.5),
+                                            nn.Dropout(p=cfg.DROPOUT),
                                             nn.Linear(64, output_dim))
         elif cfg.MODEL == cfg.PERSONAL_2:
             self.features = nn.Sequential(
@@ -100,7 +110,11 @@ class HowDoIFeel(nn.Module):
 
     def forward(self, x):
         if self.is_pre_trained:
-            return self.model(x)
+            if cfg.MODEL == cfg.VIT:
+                x = self.model(x)['last_hidden_state']
+                return self.classifier(x[:, 0, :])
+            else:
+                return self.model(x)
         else:
             out = self.features(x)
             # out = out.view(out.size(0), -1)

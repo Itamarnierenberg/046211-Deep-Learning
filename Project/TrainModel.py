@@ -44,7 +44,7 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=cfg.NUM_OF_
             val_correct = 0
 
             # Iterate over data.
-            for inputs, labels in dataloaders[phase]:
+            for inputs, labels in tqdm(dataloaders[phase]):
                 inputs = inputs.to(device)
                 labels = labels.to(device)
                 # forward

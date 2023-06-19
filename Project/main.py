@@ -4,6 +4,7 @@ from torchvision import transforms
 from torchvision.transforms import RandomCrop
 from torchvision.transforms import Grayscale
 from torchvision.transforms import ToTensor
+from torchvision.transforms import Resize
 from torchvision.transforms import RandomHorizontalFlip
 from torch.utils.data import random_split
 from torch.utils.data import DataLoader
@@ -28,13 +29,15 @@ print(f"[INFO] Current training device: {device}")
 # initialize a list of preprocessing steps to apply on each image during
 # training/validation and testing
 train_transform = transforms.Compose([
+    Resize((cfg.IMAGE_HEIGHT, cfg.IMAGE_WIDTH)),
     Grayscale(num_output_channels=cfg.NUM_INPUT_CHANNELS),
     RandomHorizontalFlip(),
-    RandomCrop((48, 48)),
+    RandomCrop((cfg.IMAGE_HEIGHT, cfg.IMAGE_WIDTH)),
     ToTensor()
 ])
 
 test_transform = transforms.Compose([
+    Resize((cfg.IMAGE_HEIGHT, cfg.IMAGE_WIDTH)),
     Grayscale(num_output_channels=cfg.NUM_INPUT_CHANNELS),
     ToTensor()
 ])
@@ -109,7 +112,7 @@ else:
 if cfg.OPTIMIZER == 'SGD':
     optimizer = torch.optim.SGD(params_to_update, lr=cfg.LR)
 elif cfg.OPTIMIZER == 'Adam':
-    optimizer = torch.optim.Adam(params_to_update, lr=cfg.LR)
+    optimizer = torch.optim.Adam(params_to_update, lr=cfg.LR, weight_decay=0.01)
 else:
     raise NotImplementedError
 data_loaders = {'train': train_loader, 'val': val_loader}
