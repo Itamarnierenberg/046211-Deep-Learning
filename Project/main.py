@@ -17,7 +17,7 @@ from sklearn.metrics import confusion_matrix
 import numpy as np
 from collections import Counter
 import matplotlib.pyplot as plt
-from HowDoIFeel import HowDoIFeel
+from HowIFeel import HowDoIFeel
 import torch.nn as nn
 from TrainModel import train_model
 import Config as cfg

@@ -5,7 +5,7 @@ import Config as cfg
 import torch
 from tools import LRScheduler
 from tools import EarlyStopping
-from HowDoIFeel import define_model
+from HowIFeel import define_model
 import optuna
 import torch.nn as nn
 

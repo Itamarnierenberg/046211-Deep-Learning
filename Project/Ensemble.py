@@ -1,5 +1,5 @@
 import Config as cfg
-from HowDoIFeel import HowDoIFeel
+from HowIFeel import HowDoIFeel
 import torch
 from torchvision.transforms import Grayscale
 from torchvision.transforms import ToTensor

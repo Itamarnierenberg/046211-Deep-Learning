@@ -26,7 +26,7 @@ FACE_NET = 'FaceNet'
 RESNET_WITH_BATCH_NORMALIZATION = 'ResNet18_Batch_Normalization'
 
 # This parameter will determine which model will be trained, possible models listed above
-MODEL = FACE_NET
+MODEL = VIT
 # This parameter will enable the use of optuna
 USE_OPTUNA = False
 
@@ -66,7 +66,7 @@ VAL_SIZE = 0.10
 
 # Training Parameters:
 BATCH_SIZE = 64
-NUM_OF_EPOCHS = 50
+NUM_OF_EPOCHS = 10
 LR = 0.01
 MOMENTUM = 0.9
 DROPOUT = 0.1
@@ -93,7 +93,7 @@ ENABLE_EARLY_STOPPING = False
 EARLY_STOPPING_PATIENCE = 10    # Num of epochs to wait before stopping the training procedure
 MINIMUM_IMPROVEMENT = 0         # the minimum difference between (previous and the new loss) to consider the network is improving.
 
-FEATURE_EXTRACT = False
+FEATURE_EXTRACT = True
 
 # Ensemble parameters
 ENABLE_ENSEMBLE = True

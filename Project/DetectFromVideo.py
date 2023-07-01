@@ -5,7 +5,7 @@ from torchvision.transforms import Grayscale
 from torchvision.transforms import ToTensor
 from torchvision.transforms import Resize
 from torchvision import transforms
-from HowDoIFeel import HowDoIFeel
+from HowIFeel import HowDoIFeel
 import torch.nn.functional as nnf
 import tools
 import numpy as np
