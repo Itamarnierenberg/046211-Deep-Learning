@@ -1,69 +1,151 @@
+/Users/itamarnierenberg/miniconda3/envs/deep_learn/bin/python3.11 /Users/itamarnierenberg/Library/CloudStorage/OneDrive-Technion/Documents/Computer Engineering/Semester 7/046211 - Deep Learning/046211-Deep-Learning/Project/main.py
 [INFO] Current training device: mps
-[INFO] Class labels: ['angry', 'fear', 'happy', 'neutral', 'sad', 'surprise']
+[INFO] Class labels: ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
 [INFO] Number of Training Samples = 25838
 [INFO] Number of Validation Samples = 2871
 [INFO] Number of total Samples = 28709
-[INFO] Total sample: Counter({2: 6509, 3: 4444, 4: 4340, 0: 3994, 1: 3703, 5: 2848})
+[INFO] Total sample: Counter({3: 6474, 4: 4484, 5: 4342, 2: 3675, 0: 3606, 6: 2857, 1: 400})
 [INFO] Train Data Summarize:
-	[INFO] Emotion: Sad, Samples: 4340
-	[INFO] Emotion: Fear, Samples: 3703
-	[INFO] Emotion: Surprise, Samples: 2848
-	[INFO] Emotion: Neutral, Samples: 4444
-	[INFO] Emotion: Happy, Samples: 6509
-	[INFO] Emotion: Angry, Samples: 3994
-[INFO] Network Architecture:
-HowDoIFeel(
-  (features): Sequential(
-    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (2): ELU(alpha=1.0, inplace=True)
-    (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (5): ELU(alpha=1.0, inplace=True)
-    (6): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
-    (7): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (8): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (9): ELU(alpha=1.0, inplace=True)
-    (10): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (11): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (12): ELU(alpha=1.0, inplace=True)
-    (13): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
-    (14): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (15): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (16): ELU(alpha=1.0, inplace=True)
-    (17): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-    (18): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-    (19): ELU(alpha=1.0, inplace=True)
-    (20): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
-  )
-  (classifier): Sequential(
-    (0): Flatten(start_dim=1, end_dim=-1)
-    (1): Dropout(p=0.5, inplace=False)
-    (2): Linear(in_features=4608, out_features=64, bias=True)
-    (3): ELU(alpha=True)
-    (4): Dropout(p=0.5, inplace=False)
-    (5): Linear(in_features=64, out_features=6, bias=True)
-  )
-)
-Epoch 0/0
+[INFO] 	Emotion: Fear, Samples: 3675
+[INFO] 	Emotion: Sad, Samples: 4342
+[INFO] 	Emotion: Neutral, Samples: 4484
+[INFO] 	Emotion: Angry, Samples: 3606
+[INFO] 	Emotion: Happy, Samples: 6474
+[INFO] 	Emotion: Surprise, Samples: 2857
+[INFO] 	Emotion: Disgust, Samples: 400
+[INFO] Hyper Parameters:
+[INFO] 	Train Portion = 0.9
+[INFO] 	Validation Portion = 0.1
+[INFO] 	Number Of Epochs = 10
+[INFO] 	Batch Size = 64
+[INFO] 	Learning Rate = 0.01
+[INFO] 	Optimizer = SGD
+[INFO] 	Using Scheduler = True
+[INFO] 		Scheduler Paitence = 5
+[INFO] 		Minimum Learning Rate = 1e-06
+[INFO] 		Reduce Factor = 0.75
+[INFO] 	Using Early Stopping = False
+Some weights of the model checkpoint at google/vit-base-patch16-224-in21k were not used when initializing ViTModel: ['pooler.dense.weight', 'pooler.dense.bias']
+- This IS expected if you are initializing ViTModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing ViTModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+<generator object Module.parameters at 0x16cdd6ce0>
+[INFO] Params to learn:
+[INFO] 	classifier.weight
+[INFO] 	classifier.bias
+Epoch 0/9
 ----------
-train Loss: 2.1275 Acc: 0.1944 Learning Rate: 0.1000
-val Loss: 1.8198 Acc: 0.1369 Learning Rate: 0.1000
+100%|██████████| 404/404 [06:07<00:00,  1.10it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.010000, Training Loss = 1.4188, Training Accuracy = 0.4740
+100%|██████████| 45/45 [00:40<00:00,  1.10it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.010000, Validation Loss = 1.3300, Validation Accuracy = 0.5186
 
-Training complete in 0m 29s
-Best val Acc: 0.136886
+Epoch 1/9
+----------
+100%|██████████| 404/404 [06:05<00:00,  1.10it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.010000, Training Loss = 1.2762, Training Accuracy = 0.5307
+100%|██████████| 45/45 [00:40<00:00,  1.11it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.010000, Validation Loss = 1.2678, Validation Accuracy = 0.5416
+
+Epoch 2/9
+----------
+100%|██████████| 404/404 [06:03<00:00,  1.11it/s]
+
+Learning Rate = 0.010000, Training Loss = 1.2372, Training Accuracy = 0.5435
+100%|██████████| 45/45 [00:40<00:00,  1.11it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.010000, Validation Loss = 1.2494, Validation Accuracy = 0.5416
+
+Epoch 3/9
+----------
+100%|██████████| 404/404 [06:04<00:00,  1.11it/s]
+
+Learning Rate = 0.010000, Training Loss = 1.2162, Training Accuracy = 0.5515
+100%|██████████| 45/45 [00:40<00:00,  1.11it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.010000, Validation Loss = 1.2270, Validation Accuracy = 0.5594
+
+Epoch 4/9
+----------
+100%|██████████| 404/404 [06:03<00:00,  1.11it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.010000, Training Loss = 1.2002, Training Accuracy = 0.5569
+100%|██████████| 45/45 [00:40<00:00,  1.12it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.010000, Validation Loss = 1.2189, Validation Accuracy = 0.5528
+
+Epoch 5/9
+----------
+100%|██████████| 404/404 [06:05<00:00,  1.11it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.010000, Training Loss = 1.1886, Training Accuracy = 0.5616
+100%|██████████| 45/45 [00:41<00:00,  1.09it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.010000, Validation Loss = 1.2005, Validation Accuracy = 0.5705
+
+Epoch 6/9
+----------
+100%|██████████| 404/404 [06:05<00:00,  1.11it/s]
+
+Learning Rate = 0.010000, Training Loss = 1.1840, Training Accuracy = 0.5609
+100%|██████████| 45/45 [00:40<00:00,  1.11it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.010000, Validation Loss = 1.1933, Validation Accuracy = 0.5674
+Epoch 00007: reducing learning rate of group 0 to 7.5000e-03.
+
+Epoch 7/9
+----------
+100%|██████████| 404/404 [06:07<00:00,  1.10it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.007500, Training Loss = 1.1749, Training Accuracy = 0.5650
+100%|██████████| 45/45 [00:40<00:00,  1.12it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.007500, Validation Loss = 1.1932, Validation Accuracy = 0.5688
+
+Epoch 8/9
+----------
+100%|██████████| 404/404 [06:04<00:00,  1.11it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.007500, Training Loss = 1.1679, Training Accuracy = 0.5692
+100%|██████████| 45/45 [00:40<00:00,  1.11it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.007500, Validation Loss = 1.1831, Validation Accuracy = 0.5691
+
+Epoch 9/9
+----------
+100%|██████████| 404/404 [06:05<00:00,  1.10it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.007500, Training Loss = 1.1632, Training Accuracy = 0.5686
+100%|██████████| 45/45 [00:40<00:00,  1.11it/s]
+
+Learning Rate = 0.007500, Validation Loss = 1.1819, Validation Accuracy = 0.5709
+
+Training complete in 67m 38s
+Best val Acc: 0.570881
 [INFO] evaluating network...
+/Users/itamarnierenberg/miniconda3/envs/deep_learn/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/Users/itamarnierenberg/miniconda3/envs/deep_learn/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/Users/itamarnierenberg/miniconda3/envs/deep_learn/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1344: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
               precision    recall  f1-score   support
 
-       angry       0.09      0.00      0.00      1069
-        fear       0.14      1.00      0.25      1024
-       happy       0.00      0.00      0.00      1774
-     neutral       0.00      0.00      0.00      1233
-         sad       0.00      0.00      0.00      1247
-    surprise       0.00      0.00      0.00       831
+       angry       0.48      0.37      0.42       958
+     disgust       0.00      0.00      0.00       111
+        fear       0.41      0.29      0.33      1024
+       happy       0.74      0.86      0.80      1774
+     neutral       0.51      0.57      0.54      1233
+         sad       0.45      0.52      0.48      1247
+    surprise       0.67      0.67      0.67       831
 
-    accuracy                           0.14      7178
-   macro avg       0.04      0.17      0.04      7178
-weighted avg       0.03      0.14      0.04      7178
+    accuracy                           0.57      7178
+   macro avg       0.46      0.47      0.46      7178
+weighted avg       0.55      0.57      0.55      7178
 
-[INFO] Final Test Accuracy = 0.1427974366118696
+[INFO] Final Test Accuracy = 0.5675675675675675
+
+Process finished with exit code 0
