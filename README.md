@@ -4,16 +4,18 @@
 <img src="./Project/images/ProjectHeader.png" width="800" height="300" />
   </p>
 <h4 align="center">
-    <a href="https://www.linkedin.com/in/itamar-nierenberg-1406261b9/"><img src="./Project/images/LinkedInLogo.png" width="120" height="40"/></a>
-    <a href="https://github.com/itamarnierenberg"><img src="./Project/images/GitHubLogo.png"/></a>
+    Itamar Nierenberg:
+  
+  <a href="https://www.linkedin.com/in/itamar-nierenberg-1406261b9/"><img src="./Project/images/LinkedInLogo.png" width="120" height="40"/></a>
+    <a href="https://github.com/itamarnierenberg"><img src="./Project/images/GitHubLogo.png" width="40" height="40"/></a>
 </a>
 
-</h4>
-  <p align="center">
-    Itamar Nierenberg: <a href="https://www.linkedin.com/in/itamar-nierenberg-1406261b9/">LinkedIn</a> , <a href="https://github.com/itamarnierenberg">GitHub</a>
-  <br>
-    Nir Elfasi: <a href="https://www.linkedin.com/in/nir-elfasi-a6a65a281/">LinkedIn</a> , <a href="https://github.com/nirelfasi">GitHub</a>
-  </p>
+<h4 align="center">
+    Nir Elfasi:
+  
+  <a href="https://www.linkedin.com/in/nir-elfasi-a6a65a281/"><img src="./Project/images/LinkedInLogo.png" width="120" height="40"/></a>
+    <a href="https://github.com/nirelfasi"><img src="./Project/images/GitHubLogo.png" width="40" height="40"/></a>
+</a>
 
 This project is using the FER-2013 dataset without any extra training samples and without uniting any classes. we tried to achieve high accuracy for this data set using CNN architectures and data augmentations.
 
