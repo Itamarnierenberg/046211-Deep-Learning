@@ -3,6 +3,12 @@
 <p align="center">
 <img src="./Project/images/ProjectHeader.png" width="800" height="300" />
   </p>
+<h4 align="center">
+    <a href="https://www.linkedin.com/in/itamar-nierenberg-1406261b9/"><img src="./Project/Images/LinkedInLogo.png"/></a>
+    <a href="https://github.com/itamarnierenberg"><img src="./Project/Images/GitHubLogo.png"/></a>
+</a>
+
+</h4>
   <p align="center">
     Itamar Nierenberg: <a href="https://www.linkedin.com/in/itamar-nierenberg-1406261b9/">LinkedIn</a> , <a href="https://github.com/itamarnierenberg">GitHub</a>
   <br>
