@@ -3,6 +3,25 @@ import torch
 import Config as cfg
 from torch.optim import lr_scheduler
 import cv2
+from HowIFeel import HowIFeel
+from sklearn.metrics import top_k_accuracy_score
+
+
+device = cfg.GPU_STR if torch.has_mps else "cpu"
+
+
+def top_k_accuracy(model, test_loader, k=2):
+    num_correct = 0
+    num_samples = 0
+    with torch.set_grad_enabled(False):
+        # set the evaluation mode
+        model.eval()
+        for (data, labels) in test_loader:
+
+            output = model(data)
+            num_correct += int(top_k_accuracy_score(labels, output, k=k) * len(data))
+            num_samples += len(data)
+    return num_correct / num_samples
 
 
 def print_hyper_params():

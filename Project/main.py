@@ -24,6 +24,7 @@ import Config as cfg
 from tools import show_examples
 from tools import plot_confusion_matrix
 from tools import print_hyper_params
+from tools import top_k_accuracy
 import optuna
 
 
@@ -188,4 +189,3 @@ con_mat = confusion_matrix(actual, predictions)
 plot_confusion_matrix(con_mat, test_data.classes)
 test_acc = (predictions == np.array(actual)).sum() / len(predictions)
 print(f"[INFO] Final Test Accuracy = {test_acc}")
-

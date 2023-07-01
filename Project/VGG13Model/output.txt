@@ -2815,5 +2815,6 @@ Best val Acc: 0.699060
 weighted avg       0.69      0.69      0.69      7178
 
 [INFO] Final Test Accuracy = 0.6882139871830594
+[INFO] Top 2 Accuracy = 0.8389523544162719
 
 Process finished with exit code 0
