@@ -91,12 +91,14 @@ For this classification task we trained a few different models to perform the ta
   <img src="./Project/ResNet18Model/plot.png" width="300" height="300" />
   <img src="./Project/ResNet18Model/ConfusionMatrix.png" width="300" height="300" /> 
 </p>
+Final Test Accuracy = 0.6159097241571468
 
 ### VGG13
 <p float="left">
   <img src="./Project/VGG13Model/plot.png" width="300" height="300" />
   <img src="./Project/VGG13Model/ConfusionMatrix.png" width="300" height="300" /> 
 </p>
+Final Test Accuracy = 0.6882139871830594
 
 ### FaceNet
 
