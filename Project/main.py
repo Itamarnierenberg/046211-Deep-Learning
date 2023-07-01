@@ -17,7 +17,7 @@ from sklearn.metrics import confusion_matrix
 import numpy as np
 from collections import Counter
 import matplotlib.pyplot as plt
-from HowIFeel import HowDoIFeel
+from HowIFeel import HowIFeel
 import torch.nn as nn
 from TrainModel import train_model
 import Config as cfg
@@ -89,7 +89,7 @@ test_loader = DataLoader(test_data, batch_size=cfg.BATCH_SIZE)
 # show_examples(train_data)
 
 is_pre_trained = False if cfg.MODEL == cfg.PERSONAL_1 or cfg.MODEL == cfg.PERSONAL_2 or cfg.MODEL == cfg.PERSONAL_3 or cfg.MODEL == cfg.PERSONAL_VGG else True
-model = HowDoIFeel(is_pre_trained=is_pre_trained)
+model = HowIFeel(is_pre_trained=is_pre_trained)
 model = model.to(device)
 
 # Gather the parameters to be optimized/updated in this run. If we are

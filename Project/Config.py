@@ -5,11 +5,11 @@ GPU_STR = 'mps'
 # The default CPU string in case there's no GPU
 CPU_STR = 'cpu'
 # If this flag is set to True then the data will be converted to a 3 channel input data
-RGB = True
-NUM_INPUT_CHANNELS = 3
+RGB = False
+NUM_INPUT_CHANNELS = 1
 assert (RGB and NUM_INPUT_CHANNELS == 3) or (not RGB and NUM_INPUT_CHANNELS == 1)
 # The initial default image size of the dataset
-DEFAULT_SIZE = 224
+DEFAULT_SIZE = 48
 # The image height and width to which the images will be resized to
 IMAGE_HEIGHT = DEFAULT_SIZE
 IMAGE_WIDTH = DEFAULT_SIZE
@@ -26,7 +26,7 @@ FACE_NET = 'FaceNet'
 RESNET_WITH_BATCH_NORMALIZATION = 'ResNet18_Batch_Normalization'
 
 # This parameter will determine which model will be trained, possible models listed above
-MODEL = VIT
+MODEL = RES_NET_18
 # This parameter will enable the use of optuna
 USE_OPTUNA = False
 
@@ -66,7 +66,7 @@ VAL_SIZE = 0.10
 
 # Training Parameters:
 BATCH_SIZE = 64
-NUM_OF_EPOCHS = 10
+NUM_OF_EPOCHS = 50
 LR = 0.01
 MOMENTUM = 0.9
 DROPOUT = 0.1
@@ -93,7 +93,7 @@ ENABLE_EARLY_STOPPING = False
 EARLY_STOPPING_PATIENCE = 10    # Num of epochs to wait before stopping the training procedure
 MINIMUM_IMPROVEMENT = 0         # the minimum difference between (previous and the new loss) to consider the network is improving.
 
-FEATURE_EXTRACT = True
+FEATURE_EXTRACT = False
 
 # Ensemble parameters
 ENABLE_ENSEMBLE = True

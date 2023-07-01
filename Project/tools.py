@@ -144,6 +144,7 @@ def plot_confusion_matrix(cm, target_names, title='Confusion matrix', cmap=None,
     plt.ylabel('True label')
     plt.xlabel('Predicted label\naccuracy={:0.4f}; misclass={:0.4f}'.format(accuracy, misclass))
     plt.grid(False)
+    plt.show()
     plt.savefig(f'{cfg.RESULTS_DIRECTORY}/{cfg.CONFUSION_MAT_FILE}')
 
 

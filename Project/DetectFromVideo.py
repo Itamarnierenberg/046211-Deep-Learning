@@ -5,7 +5,7 @@ from torchvision.transforms import Grayscale
 from torchvision.transforms import ToTensor
 from torchvision.transforms import Resize
 from torchvision import transforms
-from HowIFeel import HowDoIFeel
+from HowIFeel import HowIFeel
 import torch.nn.functional as nnf
 import tools
 import numpy as np
@@ -32,7 +32,7 @@ emotion_dict = {0: "Angry", 1: "Disgust", 2: "Fear", 3: "Happy",
 
 # load the emotionNet weights
 is_pre_trained = False if cfg.MODEL == cfg.PERSONAL_1 or cfg.MODEL == cfg.PERSONAL_2 or cfg.PERSONAL_3 or cfg.PERSONAL_VGG else True
-model = HowDoIFeel(is_pre_trained, model_name=cfg.VIDEO_MODEL)
+model = HowIFeel(is_pre_trained, model_name=cfg.VIDEO_MODEL)
 model_weights = torch.load(args_dict["model"])
 model.load_state_dict(model_weights)
 model.to(device)

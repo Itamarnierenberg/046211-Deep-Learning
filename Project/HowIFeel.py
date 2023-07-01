@@ -21,7 +21,7 @@ def set_parameter_requires_grad(model, feature_extracting=cfg.FEATURE_EXTRACT):
         model.requires_grad_(True)
 
 
-class HowDoIFeel(nn.Module):
+class HowIFeel(nn.Module):
     def __init__(self, is_pre_trained, feature_extract=cfg.FEATURE_EXTRACT, output_dim=cfg.NUM_CLASSES, model_name=None):
         """
         The initialization function for HowIFeel
@@ -30,7 +30,7 @@ class HowDoIFeel(nn.Module):
         :param output_dim: Number of classes for the dataset
         :param model_name: Which model to train, if None will be determined by Config file
         """
-        super(HowDoIFeel, self).__init__()
+        super(HowIFeel, self).__init__()
         if model_name is None:
             self.model_name = cfg.MODEL
         else:

@@ -1,5 +1,5 @@
 import Config as cfg
-from HowIFeel import HowDoIFeel
+from HowIFeel import HowIFeel
 import torch
 from torchvision.transforms import Grayscale
 from torchvision.transforms import ToTensor
@@ -31,7 +31,7 @@ test_loader = DataLoader(test_data, batch_size=cfg.BATCH_SIZE)
 models_list = list()
 for model_params in cfg.ENSEMBLE_MODELS:
     print(model_params)
-    curr_model = HowDoIFeel(is_pre_trained, model_name=model_params[0])
+    curr_model = HowIFeel(is_pre_trained, model_name=model_params[0])
     curr_model_weights = torch.load(model_params[1])
     curr_model.load_state_dict(curr_model_weights)
     curr_model.to(device)
