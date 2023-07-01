@@ -1,6 +1,8 @@
 <h2 align="center">Technion's Deep Learning (046211) Project
 </h2> 
-
+<p align="center">
+<img src="./Project/images/ProjectHeader.png" width="800" height="300" />
+  </p>
   <p align="center">
     Itamar Nierenberg: <a href="https://www.linkedin.com/in/itamar-nierenberg-1406261b9/">LinkedIn</a> , <a href="https://github.com/itamarnierenberg">GitHub</a>
   <br>
@@ -79,13 +81,22 @@ For this classification task we trained a few different models to perform the ta
 ## Results
 
 ### ViT
-<img src="./Project/ViTModel/plot.png" width="300" height="300" />
-
-<img src="./Project/ViTModel/ConfusionMatrix.png" width="300" height="300" />
+<p float="left">
+  <img src="./Project/ViTModel/plot.png" width="300" height="300" />
+  <img src="./Project/ViTModel/ConfusionMatrix.png" width="300" height="300" /> 
+</p>
 
 ### ResNet18
+<p float="left">
+  <img src="./Project/ResNet18Model/plot.png" width="300" height="300" />
+  <img src="./Project/ResNet18Model/ConfusionMatrix.png" width="300" height="300" /> 
+</p>
 
 ### VGG13
+<p float="left">
+  <img src="./Project/VGG13Model/plot.png" width="300" height="300" />
+  <img src="./Project/VGG13Model/ConfusionMatrix.png" width="300" height="300" /> 
+</p>
 
 ### FaceNet
 
