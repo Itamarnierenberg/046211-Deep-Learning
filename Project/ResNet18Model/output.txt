@@ -1,0 +1,560 @@
+/Users/itamarnierenberg/miniconda3/envs/deep_learn/bin/python3.11 /Users/itamarnierenberg/Library/CloudStorage/OneDrive-Technion/Documents/Computer Engineering/Semester 7/046211 - Deep Learning/046211-Deep-Learning/Project/main.py
+[INFO] Current training device: mps
+[INFO] Class labels: ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
+[INFO] Number of Training Samples = 25838
+[INFO] Number of Validation Samples = 2871
+[INFO] Number of total Samples = 28709
+[INFO] Total sample: Counter({3: 6485, 4: 4437, 5: 4350, 2: 3694, 0: 3589, 6: 2891, 1: 392})
+[INFO] Train Data Summarize:
+[INFO] 	Emotion: Neutral, Samples: 4437
+[INFO] 	Emotion: Happy, Samples: 6485
+[INFO] 	Emotion: Angry, Samples: 3589
+[INFO] 	Emotion: Fear, Samples: 3694
+[INFO] 	Emotion: Surprise, Samples: 2891
+[INFO] 	Emotion: Sad, Samples: 4350
+[INFO] 	Emotion: Disgust, Samples: 392
+[INFO] Hyper Parameters:
+[INFO] 	Train Portion = 0.9
+[INFO] 	Validation Portion = 0.1
+[INFO] 	Number Of Epochs = 50
+[INFO] 	Batch Size = 64
+[INFO] 	Learning Rate = 0.1
+[INFO] 	Optimizer = Adam
+[INFO] 	Using Scheduler = True
+[INFO] 		Scheduler Paitence = 5
+[INFO] 		Minimum Learning Rate = 1e-06
+[INFO] 		Reduce Factor = 0.3
+[INFO] 	Using Early Stopping = False
+<generator object Module.parameters at 0x28e5602e0>
+[INFO] Params to learn:
+[INFO] 	model.conv1.weight
+[INFO] 	model.bn1.weight
+[INFO] 	model.bn1.bias
+[INFO] 	model.layer1.0.conv1.weight
+[INFO] 	model.layer1.0.bn1.weight
+[INFO] 	model.layer1.0.bn1.bias
+[INFO] 	model.layer1.0.conv2.weight
+[INFO] 	model.layer1.0.bn2.weight
+[INFO] 	model.layer1.0.bn2.bias
+[INFO] 	model.layer1.1.conv1.weight
+[INFO] 	model.layer1.1.bn1.weight
+[INFO] 	model.layer1.1.bn1.bias
+[INFO] 	model.layer1.1.conv2.weight
+[INFO] 	model.layer1.1.bn2.weight
+[INFO] 	model.layer1.1.bn2.bias
+[INFO] 	model.layer2.0.conv1.weight
+[INFO] 	model.layer2.0.bn1.weight
+[INFO] 	model.layer2.0.bn1.bias
+[INFO] 	model.layer2.0.conv2.weight
+[INFO] 	model.layer2.0.bn2.weight
+[INFO] 	model.layer2.0.bn2.bias
+[INFO] 	model.layer2.0.downsample.0.weight
+[INFO] 	model.layer2.0.downsample.1.weight
+[INFO] 	model.layer2.0.downsample.1.bias
+[INFO] 	model.layer2.1.conv1.weight
+[INFO] 	model.layer2.1.bn1.weight
+[INFO] 	model.layer2.1.bn1.bias
+[INFO] 	model.layer2.1.conv2.weight
+[INFO] 	model.layer2.1.bn2.weight
+[INFO] 	model.layer2.1.bn2.bias
+[INFO] 	model.layer3.0.conv1.weight
+[INFO] 	model.layer3.0.bn1.weight
+[INFO] 	model.layer3.0.bn1.bias
+[INFO] 	model.layer3.0.conv2.weight
+[INFO] 	model.layer3.0.bn2.weight
+[INFO] 	model.layer3.0.bn2.bias
+[INFO] 	model.layer3.0.downsample.0.weight
+[INFO] 	model.layer3.0.downsample.1.weight
+[INFO] 	model.layer3.0.downsample.1.bias
+[INFO] 	model.layer3.1.conv1.weight
+[INFO] 	model.layer3.1.bn1.weight
+[INFO] 	model.layer3.1.bn1.bias
+[INFO] 	model.layer3.1.conv2.weight
+[INFO] 	model.layer3.1.bn2.weight
+[INFO] 	model.layer3.1.bn2.bias
+[INFO] 	model.layer4.0.conv1.weight
+[INFO] 	model.layer4.0.bn1.weight
+[INFO] 	model.layer4.0.bn1.bias
+[INFO] 	model.layer4.0.conv2.weight
+[INFO] 	model.layer4.0.bn2.weight
+[INFO] 	model.layer4.0.bn2.bias
+[INFO] 	model.layer4.0.downsample.0.weight
+[INFO] 	model.layer4.0.downsample.1.weight
+[INFO] 	model.layer4.0.downsample.1.bias
+[INFO] 	model.layer4.1.conv1.weight
+[INFO] 	model.layer4.1.bn1.weight
+[INFO] 	model.layer4.1.bn1.bias
+[INFO] 	model.layer4.1.conv2.weight
+[INFO] 	model.layer4.1.bn2.weight
+[INFO] 	model.layer4.1.bn2.bias
+[INFO] 	model.fc.weight
+Epoch 0/49
+----------
+100%|██████████| 404/404 [00:31<00:00, 13.01it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000050, Training Loss = 1.5899, Training Accuracy = 0.3935
+100%|██████████| 45/45 [00:01<00:00, 29.94it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000050, Validation Loss = 1.4198, Validation Accuracy = 0.4716
+
+Epoch 1/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.57it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000082, Training Loss = 1.1935, Training Accuracy = 0.5600
+100%|██████████| 45/45 [00:01<00:00, 31.97it/s]
+
+Learning Rate = 0.000082, Validation Loss = 1.3440, Validation Accuracy = 0.5141
+
+Epoch 2/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.85it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000132, Training Loss = 1.0213, Training Accuracy = 0.6267
+100%|██████████| 45/45 [00:01<00:00, 32.88it/s]
+
+Learning Rate = 0.000132, Validation Loss = 1.3709, Validation Accuracy = 0.5218
+
+Epoch 3/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.88it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000199, Training Loss = 0.9627, Training Accuracy = 0.6465
+100%|██████████| 45/45 [00:01<00:00, 33.13it/s]
+
+Learning Rate = 0.000199, Validation Loss = 1.3646, Validation Accuracy = 0.5364
+
+Epoch 4/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.81it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000280, Training Loss = 0.9190, Training Accuracy = 0.6647
+100%|██████████| 45/45 [00:01<00:00, 31.34it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000280, Validation Loss = 1.3759, Validation Accuracy = 0.5305
+
+Epoch 5/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.59it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000372, Training Loss = 0.8740, Training Accuracy = 0.6754
+100%|██████████| 45/45 [00:01<00:00, 30.92it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000372, Validation Loss = 1.3522, Validation Accuracy = 0.5402
+
+Epoch 6/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.75it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000470, Training Loss = 0.8680, Training Accuracy = 0.6796
+100%|██████████| 45/45 [00:01<00:00, 32.29it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000470, Validation Loss = 1.3622, Validation Accuracy = 0.5361
+
+Epoch 7/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.74it/s]
+
+Learning Rate = 0.000570, Training Loss = 0.8615, Training Accuracy = 0.6808
+100%|██████████| 45/45 [00:01<00:00, 31.46it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000570, Validation Loss = 1.4006, Validation Accuracy = 0.5441
+
+Epoch 8/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.68it/s]
+
+Learning Rate = 0.000668, Training Loss = 0.8654, Training Accuracy = 0.6795
+100%|██████████| 45/45 [00:01<00:00, 32.78it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000668, Validation Loss = 1.3854, Validation Accuracy = 0.5430
+
+Epoch 9/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.67it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000760, Training Loss = 0.8727, Training Accuracy = 0.6747
+100%|██████████| 45/45 [00:01<00:00, 32.14it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000760, Validation Loss = 1.3761, Validation Accuracy = 0.5141
+
+Epoch 10/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.65it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000841, Training Loss = 0.8908, Training Accuracy = 0.6747
+100%|██████████| 45/45 [00:01<00:00, 32.96it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000841, Validation Loss = 1.5025, Validation Accuracy = 0.5023
+
+Epoch 11/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.61it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000908, Training Loss = 0.9077, Training Accuracy = 0.6662
+100%|██████████| 45/45 [00:01<00:00, 31.11it/s]
+
+Learning Rate = 0.000908, Validation Loss = 1.2933, Validation Accuracy = 0.5385
+
+Epoch 12/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.60it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000959, Training Loss = 0.9149, Training Accuracy = 0.6616
+100%|██████████| 45/45 [00:01<00:00, 32.59it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000959, Validation Loss = 1.2832, Validation Accuracy = 0.5552
+
+Epoch 13/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.58it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000990, Training Loss = 0.9149, Training Accuracy = 0.6624
+100%|██████████| 45/45 [00:01<00:00, 32.57it/s]
+
+Learning Rate = 0.000990, Validation Loss = 1.2999, Validation Accuracy = 0.5594
+
+Epoch 14/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.55it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.001000, Training Loss = 0.9060, Training Accuracy = 0.6680
+100%|██████████| 45/45 [00:01<00:00, 32.70it/s]
+
+Learning Rate = 0.001000, Validation Loss = 1.3013, Validation Accuracy = 0.5500
+
+Epoch 15/49
+----------
+100%|██████████| 404/404 [00:28<00:00, 14.01it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000998, Training Loss = 0.8915, Training Accuracy = 0.6729
+100%|██████████| 45/45 [00:01<00:00, 30.23it/s]
+
+Learning Rate = 0.000998, Validation Loss = 1.3855, Validation Accuracy = 0.5357
+
+Epoch 16/49
+----------
+100%|██████████| 404/404 [00:28<00:00, 14.10it/s]
+
+Learning Rate = 0.000992, Training Loss = 0.8779, Training Accuracy = 0.6780
+100%|██████████| 45/45 [00:01<00:00, 33.31it/s]
+
+Learning Rate = 0.000992, Validation Loss = 1.5093, Validation Accuracy = 0.5037
+
+Epoch 17/49
+----------
+100%|██████████| 404/404 [00:28<00:00, 14.14it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000982, Training Loss = 0.8496, Training Accuracy = 0.6909
+100%|██████████| 45/45 [00:01<00:00, 33.03it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000982, Validation Loss = 1.3452, Validation Accuracy = 0.5430
+
+Epoch 18/49
+----------
+100%|██████████| 404/404 [00:28<00:00, 14.15it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000968, Training Loss = 0.8297, Training Accuracy = 0.6968
+100%|██████████| 45/45 [00:01<00:00, 31.91it/s]
+
+Learning Rate = 0.000968, Validation Loss = 1.3514, Validation Accuracy = 0.5528
+
+Epoch 19/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.86it/s]
+
+Learning Rate = 0.000950, Training Loss = 0.8006, Training Accuracy = 0.7090
+100%|██████████| 45/45 [00:01<00:00, 32.90it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000950, Validation Loss = 1.5464, Validation Accuracy = 0.4835
+
+Epoch 20/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.70it/s]
+
+Learning Rate = 0.000929, Training Loss = 0.7727, Training Accuracy = 0.7191
+100%|██████████| 45/45 [00:01<00:00, 32.96it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000929, Validation Loss = 1.3290, Validation Accuracy = 0.5597
+
+Epoch 21/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.74it/s]
+
+Learning Rate = 0.000904, Training Loss = 0.7416, Training Accuracy = 0.7321
+100%|██████████| 45/45 [00:01<00:00, 31.73it/s]
+
+Learning Rate = 0.000904, Validation Loss = 1.3674, Validation Accuracy = 0.5392
+
+Epoch 22/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.77it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000876, Training Loss = 0.7009, Training Accuracy = 0.7492
+100%|██████████| 45/45 [00:01<00:00, 33.10it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000876, Validation Loss = 1.4099, Validation Accuracy = 0.5239
+
+Epoch 23/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.73it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000845, Training Loss = 0.6603, Training Accuracy = 0.7643
+100%|██████████| 45/45 [00:01<00:00, 32.81it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000845, Validation Loss = 1.4374, Validation Accuracy = 0.5441
+
+Epoch 24/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.50it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000812, Training Loss = 0.6269, Training Accuracy = 0.7761
+100%|██████████| 45/45 [00:01<00:00, 31.46it/s]
+
+Learning Rate = 0.000812, Validation Loss = 1.4641, Validation Accuracy = 0.5451
+
+Epoch 25/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.73it/s]
+
+Learning Rate = 0.000775, Training Loss = 0.5900, Training Accuracy = 0.7894
+100%|██████████| 45/45 [00:01<00:00, 33.14it/s]
+
+Learning Rate = 0.000775, Validation Loss = 1.4624, Validation Accuracy = 0.5587
+
+Epoch 26/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.68it/s]
+
+Learning Rate = 0.000737, Training Loss = 0.5419, Training Accuracy = 0.8096
+100%|██████████| 45/45 [00:01<00:00, 32.82it/s]
+
+Learning Rate = 0.000737, Validation Loss = 1.4661, Validation Accuracy = 0.5650
+
+Epoch 27/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.71it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000696, Training Loss = 0.4897, Training Accuracy = 0.8275
+100%|██████████| 45/45 [00:01<00:00, 32.17it/s]
+
+Learning Rate = 0.000696, Validation Loss = 1.5091, Validation Accuracy = 0.5552
+
+Epoch 28/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.53it/s]
+
+Learning Rate = 0.000654, Training Loss = 0.4446, Training Accuracy = 0.8446
+100%|██████████| 45/45 [00:01<00:00, 33.23it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000654, Validation Loss = 1.5342, Validation Accuracy = 0.5580
+
+Epoch 29/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.70it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000611, Training Loss = 0.3974, Training Accuracy = 0.8613
+100%|██████████| 45/45 [00:01<00:00, 33.38it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000611, Validation Loss = 1.6836, Validation Accuracy = 0.5465
+
+Epoch 30/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.48it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000567, Training Loss = 0.3584, Training Accuracy = 0.8789
+100%|██████████| 45/45 [00:01<00:00, 31.80it/s]
+
+Learning Rate = 0.000567, Validation Loss = 1.6706, Validation Accuracy = 0.5611
+
+Epoch 31/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.68it/s]
+
+Learning Rate = 0.000522, Training Loss = 0.3087, Training Accuracy = 0.8971
+100%|██████████| 45/45 [00:01<00:00, 33.18it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000522, Validation Loss = 1.7817, Validation Accuracy = 0.5486
+
+Epoch 32/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.73it/s]
+
+Learning Rate = 0.000477, Training Loss = 0.2697, Training Accuracy = 0.9087
+100%|██████████| 45/45 [00:01<00:00, 33.19it/s]
+
+Learning Rate = 0.000477, Validation Loss = 1.7659, Validation Accuracy = 0.5597
+
+Epoch 33/49
+  0%|          | 0/404 [00:00<?, ?it/s]----------
+100%|██████████| 404/404 [00:29<00:00, 13.76it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000433, Training Loss = 0.2204, Training Accuracy = 0.9283
+100%|██████████| 45/45 [00:01<00:00, 32.51it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000433, Validation Loss = 1.8402, Validation Accuracy = 0.5496
+
+Epoch 34/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.88it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000389, Training Loss = 0.1890, Training Accuracy = 0.9362
+100%|██████████| 45/45 [00:01<00:00, 32.52it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000389, Validation Loss = 1.8464, Validation Accuracy = 0.5695
+
+Epoch 35/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.78it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000345, Training Loss = 0.1493, Training Accuracy = 0.9532
+100%|██████████| 45/45 [00:01<00:00, 32.99it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000345, Validation Loss = 1.8434, Validation Accuracy = 0.5841
+
+Epoch 36/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.78it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000303, Training Loss = 0.1259, Training Accuracy = 0.9587
+100%|██████████| 45/45 [00:01<00:00, 32.86it/s]
+
+Learning Rate = 0.000303, Validation Loss = 1.8700, Validation Accuracy = 0.5890
+
+Epoch 37/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.75it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000263, Training Loss = 0.0985, Training Accuracy = 0.9688
+100%|██████████| 45/45 [00:01<00:00, 32.65it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000263, Validation Loss = 1.9591, Validation Accuracy = 0.5772
+
+Epoch 38/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.77it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000224, Training Loss = 0.0781, Training Accuracy = 0.9770
+100%|██████████| 45/45 [00:01<00:00, 32.35it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000224, Validation Loss = 1.9499, Validation Accuracy = 0.5925
+
+Epoch 39/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.74it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000188, Training Loss = 0.0555, Training Accuracy = 0.9849
+100%|██████████| 45/45 [00:01<00:00, 33.28it/s]
+
+Learning Rate = 0.000188, Validation Loss = 2.0772, Validation Accuracy = 0.5879
+
+Epoch 40/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.73it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000154, Training Loss = 0.0434, Training Accuracy = 0.9882
+100%|██████████| 45/45 [00:01<00:00, 32.87it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000154, Validation Loss = 2.0289, Validation Accuracy = 0.5904
+
+Epoch 41/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.72it/s]
+
+Learning Rate = 0.000123, Training Loss = 0.0314, Training Accuracy = 0.9925
+100%|██████████| 45/45 [00:01<00:00, 33.13it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000123, Validation Loss = 2.0852, Validation Accuracy = 0.5918
+
+Epoch 42/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.69it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000095, Training Loss = 0.0198, Training Accuracy = 0.9953
+100%|██████████| 45/45 [00:01<00:00, 32.75it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000095, Validation Loss = 2.0972, Validation Accuracy = 0.5810
+
+Epoch 43/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.65it/s]
+
+Learning Rate = 0.000071, Training Loss = 0.0142, Training Accuracy = 0.9963
+100%|██████████| 45/45 [00:01<00:00, 33.26it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000071, Validation Loss = 2.1231, Validation Accuracy = 0.5918
+
+Epoch 44/49
+----------
+100%|██████████| 404/404 [00:29<00:00, 13.90it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000049, Training Loss = 0.0103, Training Accuracy = 0.9976
+100%|██████████| 45/45 [00:01<00:00, 33.36it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000049, Validation Loss = 2.0620, Validation Accuracy = 0.6029
+
+Epoch 45/49
+----------
+100%|██████████| 404/404 [00:28<00:00, 14.11it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000032, Training Loss = 0.0076, Training Accuracy = 0.9984
+100%|██████████| 45/45 [00:01<00:00, 32.95it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000032, Validation Loss = 2.1488, Validation Accuracy = 0.5866
+
+Epoch 46/49
+----------
+100%|██████████| 404/404 [00:28<00:00, 14.28it/s]
+
+Learning Rate = 0.000018, Training Loss = 0.0059, Training Accuracy = 0.9990
+100%|██████████| 45/45 [00:01<00:00, 36.79it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000018, Validation Loss = 2.1056, Validation Accuracy = 0.5946
+
+Epoch 47/49
+----------
+100%|██████████| 404/404 [00:28<00:00, 13.94it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000008, Training Loss = 0.0050, Training Accuracy = 0.9993
+100%|██████████| 45/45 [00:01<00:00, 32.90it/s]
+  0%|          | 0/404 [00:00<?, ?it/s]
+Learning Rate = 0.000008, Validation Loss = 2.1214, Validation Accuracy = 0.5918
+
+Epoch 48/49
+----------
+100%|██████████| 404/404 [00:28<00:00, 13.97it/s]
+  0%|          | 0/45 [00:00<?, ?it/s]
+Learning Rate = 0.000002, Training Loss = 0.0043, Training Accuracy = 0.9995
+100%|██████████| 45/45 [00:01<00:00, 32.78it/s]
+
+Learning Rate = 0.000002, Validation Loss = 2.0552, Validation Accuracy = 0.5939
+
+Epoch 49/49
+----------
+100%|██████████| 404/404 [00:28<00:00, 14.21it/s]
+
+Learning Rate = 0.000000, Training Loss = 0.0038, Training Accuracy = 0.9998
+100%|██████████| 45/45 [00:01<00:00, 33.14it/s]
+
+Learning Rate = 0.000000, Validation Loss = 2.0694, Validation Accuracy = 0.5932
+
+Training complete in 25m 38s
+Best val Acc: 0.602926
+[INFO] evaluating network...
+              precision    recall  f1-score   support
+
+       angry       0.50      0.53      0.52       958
+     disgust       0.70      0.51      0.59       111
+        fear       0.50      0.46      0.48      1024
+       happy       0.80      0.83      0.81      1774
+     neutral       0.57      0.55      0.56      1233
+         sad       0.47      0.50      0.48      1247
+    surprise       0.78      0.75      0.76       831
+
+    accuracy                           0.62      7178
+   macro avg       0.62      0.59      0.60      7178
+weighted avg       0.62      0.62      0.62      7178
+
+[INFO] Final Test Accuracy = 0.6159097241571468
+
+Process finished with exit code 0

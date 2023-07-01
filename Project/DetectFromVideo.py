@@ -17,34 +17,23 @@ from ffpyplayer.player import MediaPlayer
 import time
 
 # initialize the argument parser and establish the arguments required
-parser = argparse.ArgumentParser()
-parser.add_argument("-i", "--video", type=str, required=True,
-                    help="path to the video file/ webcam")
-parser.add_argument("-m", "--model", type=str, required=True,
-                    help="path to the trained model")
-parser.add_argument('-p', '--prototxt', type=str, required=True,
-                    help='Path to deployed prototxt.txt model architecture file')
-parser.add_argument('-c', '--caffemodel', type=str, required=True,
-                    help='Path to Caffe model containing the weights')
-parser.add_argument("-conf", "--confidence", type=int, default=0.5,
-                    help="the minimum probability to filter out weak detection")
-args = vars(parser.parse_args())
+args_dict = {'video': cfg.VIDEO_PATH, 'model': cfg.TRAINED_MODEL, 'prototxt': cfg.FACE_DETECTION, 'caffemodel': cfg.CAFFE_MODEL, 'confidence': 0.5}
 
 # load our serialized model from disk
 print("[INFO] loading model...")
-net = cv2.dnn.readNetFromCaffe(args['prototxt'], args['caffemodel'])
+net = cv2.dnn.readNetFromCaffe(args_dict['prototxt'], args_dict['caffemodel'])
 
 # check if gpu is available or not
 device = cfg.GPU_STR if torch.has_mps else "cpu"
 
 # dictionary mapping for different outputs
-emotion_dict = {0: "Angry", 1: "Fearful", 2: "Happy", 3: "Neutral",
-                4: "Sad", 5: "Surprised"}
+emotion_dict = {0: "Angry", 1: "Disgust", 2: "Fear", 3: "Happy",
+                4: "Neutral", 5: "Sad", 6: "Surprise"}
 
 # load the emotionNet weights
-is_pre_trained = False if cfg.MODEL == cfg.PERSONAL_1 or cfg.MODEL == cfg.PERSONAL_2 else True
-model = HowDoIFeel(is_pre_trained)
-model_weights = torch.load(args["model"])
+is_pre_trained = False if cfg.MODEL == cfg.PERSONAL_1 or cfg.MODEL == cfg.PERSONAL_2 or cfg.PERSONAL_3 or cfg.PERSONAL_VGG else True
+model = HowDoIFeel(is_pre_trained, model_name=cfg.VIDEO_MODEL)
+model_weights = torch.load(args_dict["model"])
 model.load_state_dict(model_weights)
 model.to(device)
 model.eval()
@@ -58,8 +47,7 @@ data_transform = transforms.Compose([
 ])
 
 # initialize the video stream
-vs = cv2.VideoCapture(args['video'])
-player = MediaPlayer(args['video'])
+vs = cv2.VideoCapture(args_dict['video'])
 start_time = time.time()
 
 # iterate over frames from the video file stream
@@ -67,7 +55,6 @@ while True:
 
     # read the next frame from the input stream
     (grabbed, frame) = vs.read()
-    audio_frame, val = player.get_frame()
 
     # check there's any frame to be grabbed from the steam
     if not grabbed:
@@ -96,7 +83,7 @@ while True:
 
         # eliminate weak detections, ensuring the confidence is greater
         # than the minimum confidence pre-defined
-        if confidence > args['confidence']:
+        if confidence > args_dict['confidence']:
             # compute the (x,y) coordinates (int) of the bounding box for the face
             box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
             (start_x, start_y, end_x, end_y) = box.astype("int")
@@ -144,13 +131,9 @@ while True:
     # break the loop if the `q` key is pressed
     elapsed = (time.time() - start_time) * 1000  # msec
     play_time = int(vs.get(cv2.CAP_PROP_POS_MSEC))
-    sleep = max(1, int(play_time - elapsed))
-    key = cv2.waitKey(sleep) & 0xFF
+    key = cv2.waitKey(1) & 0xFF
     if key == ord("q"):
         break
-    if val != 'eof' and audio_frame is not None:
-        # audio
-        img, t = audio_frame
 
 # destroy all opened frame and clean up the video-steam
 cv2.destroyAllWindows()

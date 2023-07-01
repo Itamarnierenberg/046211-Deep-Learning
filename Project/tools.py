@@ -153,7 +153,7 @@ class LRScheduler:
     (patience), then decrease the learning rate by a given 'factor'
     """
 
-    def __init__(self, optimizer, patience=cfg.SCHED_PATIENCE, min_lr=cfg.MIN_LR, factor=cfg.REDUCE_FACTOR):
+    def __init__(self, optimizer, train_length, patience=cfg.SCHED_PATIENCE, min_lr=cfg.MIN_LR, factor=cfg.REDUCE_FACTOR):
         """
         :param optimizer: the optimizer we are using
         :param patience: how many epochs to wait before updating the lr
@@ -166,14 +166,21 @@ class LRScheduler:
         self.patience = patience
         self.min_lr = min_lr
         self.factor = factor
-        self.lr_scheduler = lr_scheduler.ReduceLROnPlateau(self.optimizer, mode="min",
-                                                           patience=self.patience,
-                                                           factor=self.factor,
-                                                           min_lr=self.min_lr,
-                                                           verbose=True)
+        if cfg.SCHED_NAME == 'RedueLROnPlateau':
+            self.lr_scheduler = lr_scheduler.ReduceLROnPlateau(self.optimizer, mode="min",
+                                                               patience=self.patience,
+                                                               factor=self.factor,
+                                                               min_lr=self.min_lr,
+                                                               verbose=True)
+        elif cfg.SCHED_NAME == 'OneCycleLR':
+            self.lr_scheduler = lr_scheduler.OneCycleLR(self.optimizer, cfg.MAX_LEARNING_RATE,
+                                                        epochs=cfg.NUM_OF_EPOCHS, steps_per_epoch=train_length)
 
     def __call__(self, validation_loss):
-        self.lr_scheduler.step(validation_loss)
+        if cfg.SCHED_NAME == 'OneCycleLR':
+            self.lr_scheduler.step()
+        elif cfg.SCHED_NAME == 'ReduceLROnPlateau':
+            self.lr_scheduler.step(validation_loss)
 
 
 class EarlyStopping:

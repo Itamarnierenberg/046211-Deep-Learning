@@ -2,10 +2,14 @@ import torch
 from torchvision import datasets
 from torchvision import transforms
 from torchvision.transforms import RandomCrop
+from torchvision.transforms import RandomApply
+from torchvision.transforms import RandomAffine
+from torchvision.transforms import RandomRotation
 from torchvision.transforms import Grayscale
 from torchvision.transforms import ToTensor
 from torchvision.transforms import Resize
 from torchvision.transforms import RandomHorizontalFlip
+from torchvision.transforms import ColorJitter
 from torch.utils.data import random_split
 from torch.utils.data import DataLoader
 from sklearn.metrics import classification_report
@@ -20,6 +24,7 @@ import Config as cfg
 from tools import show_examples
 from tools import plot_confusion_matrix
 from tools import print_hyper_params
+import optuna
 
 
 # configure the device to use for training the model, either gpu or cpu
@@ -32,7 +37,8 @@ train_transform = transforms.Compose([
     Resize((cfg.IMAGE_HEIGHT, cfg.IMAGE_WIDTH)),
     Grayscale(num_output_channels=cfg.NUM_INPUT_CHANNELS),
     RandomHorizontalFlip(),
-    RandomCrop((cfg.IMAGE_HEIGHT, cfg.IMAGE_WIDTH)),
+    RandomApply([transforms.RandomAffine(0, translate=(0.2, 0.2))], p=0.5),
+    ColorJitter(),
     ToTensor()
 ])
 
@@ -41,6 +47,7 @@ test_transform = transforms.Compose([
     Grayscale(num_output_channels=cfg.NUM_INPUT_CHANNELS),
     ToTensor()
 ])
+
 
 # load all the images within the specified folder and apply different augmentation
 train_data = datasets.ImageFolder(cfg.TRAIN_DIRECTORY, transform=train_transform)
@@ -74,14 +81,14 @@ print(f'[INFO] Train Data Summarize:')
 for label, num_samples in class_count_train.items():
     print(f'[INFO] \tEmotion: {cfg.CODE_TO_STR[label]}, Samples: {num_samples}')
 print_hyper_params()
-train_loader = DataLoader(train_data, batch_size=cfg.BATCH_SIZE)    # FIXME - Maybe add sampler=sampler
+train_loader = DataLoader(train_data, batch_size=cfg.BATCH_SIZE)
 val_loader = DataLoader(val_data, batch_size=cfg.BATCH_SIZE)
 test_loader = DataLoader(test_data, batch_size=cfg.BATCH_SIZE)
 
 # Visualize a few images from the data
-show_examples(train_data)
+# show_examples(train_data)
 
-is_pre_trained = False if cfg.MODEL == cfg.PERSONAL_1 or cfg.MODEL == cfg.PERSONAL_2 else True
+is_pre_trained = False if cfg.MODEL == cfg.PERSONAL_1 or cfg.MODEL == cfg.PERSONAL_2 or cfg.MODEL == cfg.PERSONAL_3 or cfg.MODEL == cfg.PERSONAL_VGG else True
 model = HowDoIFeel(is_pre_trained=is_pre_trained)
 model = model.to(device)
 
@@ -110,15 +117,33 @@ else:
 
 # Observe that all parameters are being optimized
 if cfg.OPTIMIZER == 'SGD':
-    optimizer = torch.optim.SGD(params_to_update, lr=cfg.LR)
+    optimizer = torch.optim.SGD(params_to_update, lr=cfg.LR, momentum=cfg.MOMENTUM, nesterov=True, weight_decay=cfg.WEIGHT_DECAY)
 elif cfg.OPTIMIZER == 'Adam':
-    optimizer = torch.optim.Adam(params_to_update, lr=cfg.LR, weight_decay=0.01)
+    optimizer = torch.optim.Adam(params_to_update, lr=cfg.LR, weight_decay=cfg.WEIGHT_DECAY)
 else:
     raise NotImplementedError
 data_loaders = {'train': train_loader, 'val': val_loader}
 criterion = nn.CrossEntropyLoss()
-
-model, _, history = train_model(model, data_loaders, criterion, optimizer)
+if cfg.USE_OPTUNA:
+    sampler = optuna.samplers.TPESampler()
+    study = optuna.create_study(study_name="FER-2013", direction="maximize", sampler=sampler)
+    study.optimize(lambda trial: train_model(trial, data_loaders, criterion), n_trials=20, timeout=600)
+    pruned_trials = [t for t in study.trials if t.state == optuna.trial.TrialState.PRUNED]
+    complete_trials = [t for t in study.trials if t.state == optuna.trial.TrialState.COMPLETE]
+    print("Study statistics: ")
+    print("  Number of finished trials: ", len(study.trials))
+    print("  Number of pruned trials: ", len(pruned_trials))
+    print("  Number of complete trials: ", len(complete_trials))
+    print("Best trial:")
+    trial = study.best_trial
+    print("  Value: ", trial.value)
+    print(" Params: ")
+    for key, value in trial.params.items():
+        print(" {}: {}".format(key, value))
+    optuna.visualization.plot_param_importances(study)
+    exit(1)
+else:
+    model, _, history = train_model(model, data_loaders, criterion, optimizer)
 # move model back to cpu and save the trained model to disk
 if device == cfg.GPU_STR:
     model = model.to(cfg.CPU_STR)
