@@ -66,7 +66,7 @@ VAL_SIZE = 0.10
 
 # Training Parameters:
 BATCH_SIZE = 64
-NUM_OF_EPOCHS = 1
+NUM_OF_EPOCHS = 100
 LR = 0.01
 MOMENTUM = 0.9
 DROPOUT = 0.1
